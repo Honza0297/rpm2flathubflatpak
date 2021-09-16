@@ -27,8 +27,9 @@ if not no_generate_files:
     params.append("--flathub="+flathub_id) if from_flathub else None
     params.append("--force") if force_rewrite else None
     params.append(app_name)
-    subprocess.call(params)
-
+    ret = subprocess.call(params, stdout=subprocess.DEVNULL)
+    if ret:
+        exit(ret)
 # Generate a skelet of a flathub manifest
 manifest = json.loads("{}")
 container = None
@@ -57,7 +58,7 @@ sha_url = "https://src.fedoraproject.org/rpms/{0}/raw/{1}/f/sources"
 # For all rpms:
 for pkg_name in pkgs.keys():
     # TODO check if app is in flathub's shared modules. If so, use the configuration from there.
-    
+
     # Init the module
     module = json.loads("{}")
     module["name"] = pkg_name
@@ -122,7 +123,7 @@ for pkg_name in pkgs.keys():
             r = requests.get(sha_url.format(pkg_name, pkgs[pkg_name]["ref"]))
             sha_file_sliced = r.content.decode(encoding=r.encoding).split(" ")
 
-            source[sha_file_sliced[0]] = sha_file_sliced[-1].rstrip()   
+            source[sha_file_sliced[0].lower()] = sha_file_sliced[-1].rstrip()   
             
             # append current source to sources of the current module
             module["sources"].append(source)
