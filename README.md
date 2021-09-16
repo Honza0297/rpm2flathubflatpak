@@ -21,3 +21,14 @@ $ python r2ff.py --flathub=org.gnome.Dictionary gnome-dictionary
 Notes:
   
   * We cannot use --flatpak-common - there is no alternative in flathub world
+
+## Example file
+  
+  org.gnome.Dictionary is an example file obtained by:
+  
+  $ python r2ff.py --flathub=org.gnome.Dictionary gnome-dictionary > org.gnome.Dictionary.json
+  
+  This manifest can be used for a flatpak creation with:
+  
+  $ flatpak-builder build-dir org.gnome.Dictionary.json
+  
