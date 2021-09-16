@@ -16,7 +16,7 @@ Different from fedmod:
 * --no-gen (do not generate yaml files, use existing ones instead)
 
 Example:
-$ python r2ff.py --flathub=org.supertuxproject.SuperTux supertux
+$ python r2ff.py --flathub=org.gnome.Dictionary gnome-dictionary
   
 Notes:
   
