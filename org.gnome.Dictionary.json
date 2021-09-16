@@ -1,0 +1,29 @@
+{
+    "app-id": "org.gnome.Dictionary",
+    "runtime": "org.fedoraproject.Platform",
+    "runtime-version": "f34",
+    "sdk": "org.fedoraproject.Sdk",
+    "command": "gnome-dictionary",
+    "finish-args": [
+        "--share=ipc",
+        "--socket=fallback-x11",
+        "--socket=wayland",
+        "--share=network",
+        "--filesystem=xdg-documents",
+        "--metadata=X-DConf=migrate-path=/org/gnome/dictionary/"
+    ],
+    "modules": [
+        {
+            "name": "gnome-dictionary",
+            "buildsystem": "meson",
+            "config-opts": [],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/gnome-dictionary/40/gnome-dictionary-40.0.tar.xz",
+                    "sha512": "96e8c5efbba43e1a7d247703ac17cbcb8579cc633f6db74b6fe4431e0b1aed47ab76fd15cc114497b5ee76fb33b57fd9936cc869ffe905f208c836b5a231b126"
+                }
+            ]
+        }
+    ]
+}
